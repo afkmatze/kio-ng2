@@ -8,10 +8,14 @@
     "build": "NODE_ENV=production tsc",
     "preversion": "npm run build"
   },
+  "files": [
+    "src/matching"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "tslint": "^5.0.0",
     "typescript": "^2.2.2"
   },
