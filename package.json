@@ -8,9 +8,6 @@
     "build": "NODE_ENV=production tsc",
     "preversion": "npm run build"
   },
-  "files": [
-    "src/matching"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
