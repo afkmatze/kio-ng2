@@ -1,6 +1,6 @@
 {
   "name": "kio-ng2",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "release/index.js",
   "typings": "release/index.d.ts",
   "scripts": {
