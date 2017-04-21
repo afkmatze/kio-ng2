@@ -16,7 +16,10 @@
     "tslint": "^5.0.0",
     "typescript": "^2.2.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@angular/router": "^4.0.2",
+    "@types/node": "^7.0.13"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:afkmatze/kio-ng2.git"

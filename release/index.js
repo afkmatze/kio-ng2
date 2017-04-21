@@ -5,4 +5,6 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./classes"));
 __export(require("./enums"));
+var debugging = require("./debug");
+exports.debugging = debugging;
 //# sourceMappingURL=index.js.map

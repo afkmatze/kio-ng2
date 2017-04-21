@@ -12,10 +12,6 @@ export class KioContentModel extends KioNodeModel {
     }
   }
 
-  get isKioContent(){
-    return true
-  }
-
   get isLoaded () {
     return this._data !== null
   }

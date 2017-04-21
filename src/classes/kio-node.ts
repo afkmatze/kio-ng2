@@ -88,6 +88,11 @@ export class KioNodeModel implements KioNode {
     }
   }
 
+  get pathToRoot():KioNode[] {
+    const path:KioNode[] = []
+    return this.parent ? this.parent.pathToRoot.concat(this) : [this]
+  }
+
   toObject():KioNode{
     return {
       type: this._type,

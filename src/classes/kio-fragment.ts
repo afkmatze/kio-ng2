@@ -1,11 +1,8 @@
 import { KioContentModel } from './kio-content'
 import { KioNodeModel } from './kio-node'
-import { KioNode } from '../interfaces/kio-node'
-import { KioFragment } from '../interfaces/kio-fragment'
+import { KioNode, KioFragment, KioNodeFilter } from '../interfaces'
 
 export class KioFragmentModel extends KioContentModel {
-
-  get isKioFragment () { return true }
 
   get type ():string {
     return 'fragment'
@@ -25,6 +22,33 @@ export class KioFragmentModel extends KioContentModel {
 
   get children () {
     return this._children.slice()
+  }
+
+  filterChildren ( predicate:KioNodeFilter ):KioNode[] {
+    return this.children.filter ( ( node:KioNode, idx:number ) => predicate ( node, idx, this) )
+  }
+
+  find ( predicate:KioNodeFilter, maxDepth:number=-1 ):KioNode {
+    for (var i = 0; i < this._children.length; i++) {
+      const child = this.childAt(i)
+      if ( predicate ( child , i, this ) )
+        return child      
+    }
+    if ( maxDepth !== 0 )
+    {
+      for (var i = 0; i < this._children.length; i++) {
+        const child = this.childAt(i)
+        if ( child.type === 'fragment' )
+        {
+          const found = (<KioFragmentModel>child).find ( predicate, maxDepth-1 )
+          if ( found )
+          {
+            return found
+          }
+        }
+      }        
+    }
+    return undefined
   }
 
   createChildNode ( props : KioFragment ) : KioNode {

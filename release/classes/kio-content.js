@@ -21,13 +21,6 @@ var KioContentModel = (function (_super) {
         }
         return _this;
     }
-    Object.defineProperty(KioContentModel.prototype, "isKioContent", {
-        get: function () {
-            return true;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(KioContentModel.prototype, "isLoaded", {
         get: function () {
             return this._data !== null;

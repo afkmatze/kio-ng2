@@ -20,5 +20,6 @@ export declare class KioNodeModel implements KioNode {
     readonly index: number;
     readonly slug: string;
     readonly contentQuery: KioQuery;
+    readonly pathToRoot: KioNode[];
     toObject(): KioNode;
 }

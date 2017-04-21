@@ -1,12 +1,12 @@
 import { KioContentModel } from './kio-content';
-import { KioNode } from '../interfaces/kio-node';
-import { KioFragment } from '../interfaces/kio-fragment';
+import { KioNode, KioFragment, KioNodeFilter } from '../interfaces';
 export declare class KioFragmentModel extends KioContentModel {
-    readonly isKioFragment: boolean;
     readonly type: string;
     constructor(props: KioFragment);
     private _children;
     readonly children: KioContentModel[];
+    filterChildren(predicate: KioNodeFilter): KioNode[];
+    find(predicate: KioNodeFilter, maxDepth?: number): KioNode;
     createChildNode(props: KioFragment): KioNode;
     childCount(): number;
     childAt(index: any): KioContentModel;
