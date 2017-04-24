@@ -13,9 +13,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var abstract_1 = require("../abstract");
 var NodeLogger = (function (_super) {
     __extends(NodeLogger, _super);
-    function NodeLogger() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function NodeLogger(target) {
+        var _this = _super.call(this, target) || this;
+        _this.associations = [];
+        return _this;
     }
+    NodeLogger.prototype.add = function (association) {
+        this.associations.push(association);
+    };
     return NodeLogger;
 }(abstract_1.Logger));
 exports.NodeLogger = NodeLogger;

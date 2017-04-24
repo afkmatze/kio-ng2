@@ -1,6 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var classes_1 = require("../../classes");
+var associations_1 = require("./associations");
 var getRootNode = function (node) {
     if (!node.parent)
         return node;
@@ -8,17 +17,33 @@ var getRootNode = function (node) {
 };
 var Logger = (function () {
     function Logger() {
+        this.errors = new Set();
         this.contexts = new Set();
         this.contextLogs = new WeakMap();
     }
-    Logger.prototype.log = function (context, payload) {
+    Logger.prototype.getContext = function (context) {
         if (!this.contexts.has(context)) {
             this.contexts.add(context);
             this.contextLogs.set(context, new Set());
         }
-        this.contextLogs.get(context).add({
+        return this.contextLogs.get(context);
+    };
+    Logger.prototype.associate = function (context, other) {
+        associations_1.associate(context, other);
+    };
+    Logger.prototype.log = function (context, payload) {
+        this.getContext(context).add({
             timestamp: Date.now(),
             payload: payload
+        });
+    };
+    Logger.prototype.logError = function (contextClass, context, callerFn, error, args) {
+        var errorData = __assign({ error: error,
+            contextClass: contextClass, caller: callerFn }, args);
+        this.errors.add(errorData);
+        this.getContext(context).add({
+            timestamp: Date.now(),
+            payload: errorData
         });
     };
     Logger.prototype.filterContext = function (predicate) {

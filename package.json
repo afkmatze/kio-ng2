@@ -6,6 +6,7 @@
   "scripts": {
     "prebuild": "rm -rf ./release",
     "build": "NODE_ENV=production tsc",
+    "build:watch": "nodemon -w ./src -e ts --exec \"npm run build\"",
     "preversion": "npm run build"
   },
   "keywords": [],
