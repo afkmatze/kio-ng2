@@ -106,6 +106,14 @@ var KioNodeModel = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(KioNodeModel.prototype, "pathToRoot", {
+        get: function () {
+            var path = [];
+            return this.parent ? this.parent.pathToRoot.concat(this) : [this];
+        },
+        enumerable: true,
+        configurable: true
+    });
     KioNodeModel.prototype.toObject = function () {
         return {
             type: this._type,

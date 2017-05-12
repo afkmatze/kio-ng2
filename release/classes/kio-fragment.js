@@ -22,11 +22,6 @@ var KioFragmentModel = (function (_super) {
         }
         return _this;
     }
-    Object.defineProperty(KioFragmentModel.prototype, "isKioFragment", {
-        get: function () { return true; },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(KioFragmentModel.prototype, "type", {
         get: function () {
             return 'fragment';
@@ -41,6 +36,30 @@ var KioFragmentModel = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    KioFragmentModel.prototype.filterChildren = function (predicate) {
+        var _this = this;
+        return this.children.filter(function (node, idx) { return predicate(node, idx, _this); });
+    };
+    KioFragmentModel.prototype.find = function (predicate, maxDepth) {
+        if (maxDepth === void 0) { maxDepth = -1; }
+        for (var i = 0; i < this._children.length; i++) {
+            var child = this.childAt(i);
+            if (predicate(child, i, this))
+                return child;
+        }
+        if (maxDepth !== 0) {
+            for (var i = 0; i < this._children.length; i++) {
+                var child = this.childAt(i);
+                if (child.type === 'fragment') {
+                    var found = child.find(predicate, maxDepth - 1);
+                    if (found) {
+                        return found;
+                    }
+                }
+            }
+        }
+        return undefined;
+    };
     KioFragmentModel.prototype.createChildNode = function (props) {
         if (!!props.cont) {
             return new KioFragmentModel(props);

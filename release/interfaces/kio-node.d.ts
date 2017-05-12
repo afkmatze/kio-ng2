@@ -11,4 +11,5 @@ export interface KioNode {
     index?: number;
     isKioNode?: boolean;
     headers?: KioNodeHeaders;
+    pathToRoot?: KioNode[];
 }
