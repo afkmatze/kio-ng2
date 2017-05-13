@@ -10,25 +10,25 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var kio_content_1 = require("./kio-content");
+var kio_node_1 = require("./kio-node");
 var KioFragmentModel = (function (_super) {
     __extends(KioFragmentModel, _super);
-    function KioFragmentModel(props) {
-        var _this = _super.call(this, props) || this;
+    function KioFragmentModel(props, parent) {
+        var _this = _super.call(this, props.type, props, parent) || this;
         _this._children = [];
         var childNodes = props.children || props.cont;
         if (Array.isArray(childNodes)) {
             childNodes.forEach(function (childNode) { return _this.addChild(childNode); });
         }
         return _this;
+        /*    if ( implementsKioPublication(props) )
+            {
+              this._type = KioNodeType.publication
+            }
+            else {
+              this._type = KioNodeType.fragment
+            }*/
     }
-    Object.defineProperty(KioFragmentModel.prototype, "type", {
-        get: function () {
-            return 'fragment';
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(KioFragmentModel.prototype, "children", {
         get: function () {
             return this._children.slice();
@@ -50,7 +50,7 @@ var KioFragmentModel = (function (_super) {
         if (maxDepth !== 0) {
             for (var i = 0; i < this._children.length; i++) {
                 var child = this.childAt(i);
-                if (child.type === 'fragment') {
+                if (child instanceof KioFragmentModel) {
                     var found = child.find(predicate, maxDepth - 1);
                     if (found) {
                         return found;
@@ -60,18 +60,9 @@ var KioFragmentModel = (function (_super) {
         }
         return undefined;
     };
-    KioFragmentModel.prototype.createChildNode = function (props) {
-        if (!!props.cont) {
-            return new KioFragmentModel(props);
-        }
-        return new kio_content_1.KioContentModel(props);
-    };
     KioFragmentModel.prototype.childCount = function () { return this._children.length; };
     KioFragmentModel.prototype.childAt = function (index) { return this._children[index]; };
     KioFragmentModel.prototype.addChild = function (childNode) {
-        if (!(childNode instanceof kio_content_1.KioContentModel)) {
-            childNode = this.createChildNode(childNode);
-        }
         childNode.parent = this;
         this._children.push(childNode);
     };
@@ -89,6 +80,6 @@ var KioFragmentModel = (function (_super) {
         return Object.assign({}, _super.prototype.toObject.call(this), { children: (this._children || []).map(function (child) { return child.toObject(); }) });
     };
     return KioFragmentModel;
-}(kio_content_1.KioContentModel));
+}(kio_node_1.KioNodeModel));
 exports.KioFragmentModel = KioFragmentModel;
 //# sourceMappingURL=kio-fragment.js.map

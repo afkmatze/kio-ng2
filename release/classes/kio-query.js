@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Types = require("../types");
+var enums_1 = require("../enums");
 var KioQueryModel = (function () {
     function KioQueryModel() {
     }
@@ -8,11 +10,12 @@ var KioQueryModel = (function () {
         query.cuid = node.cuid;
         query.locale = node.locale;
         query.cmd = 'get';
-        query.role = node.type;
-        if (node.type === 'pub') {
+        query.role = enums_1.KioNodeType[node.type];
+        if (Types.isCtnPublication(node.type)) {
             query.headers = true;
+            query.role = 'pub';
         }
-        else if (node.type === 'src') {
+        else if (Types.isCtnSrc(node.type)) {
             var mimeType = node.headers.mimeType;
             if (mimeType && mimeType.startsWith('image')) {
                 query.cmd = 'img';

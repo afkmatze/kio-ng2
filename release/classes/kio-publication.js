@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var kio_fragment_1 = require("./kio-fragment");
+var enums_1 = require("../enums");
 var KioPublicationModel = (function (_super) {
     __extends(KioPublicationModel, _super);
     function KioPublicationModel(props) {
@@ -38,7 +39,7 @@ var KioPublicationModel = (function (_super) {
             return {
                 cuid: this.cuid,
                 locale: this.locale,
-                role: this.type,
+                role: enums_1.KioNodeType[this.type],
                 headers: true,
                 cmd: 'get'
             };

@@ -1,4 +1,5 @@
 import { KioQuery, KioNode } from '../interfaces';
+import * as Types from '../types';
 export declare class KioQueryModel implements KioQuery {
     cuid: string;
     locale: string;
@@ -6,5 +7,5 @@ export declare class KioQueryModel implements KioQuery {
     role: string;
     headers: boolean;
     params: any;
-    static fromNode(node: KioNode): KioQueryModel;
+    static fromNode<T extends Types.KioStructureType, N extends KioNode<T>>(node: N): KioQueryModel;
 }

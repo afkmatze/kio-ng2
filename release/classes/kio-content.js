@@ -13,17 +13,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var kio_node_1 = require("./kio-node");
 var KioContentModel = (function (_super) {
     __extends(KioContentModel, _super);
-    function KioContentModel(data, parent) {
-        var _this = _super.call(this, data, parent) || this;
-        _this._data = null;
-        if (data.data) {
-            _this._data = data.data;
-        }
-        return _this;
+    function KioContentModel(type, props, parent) {
+        return _super.call(this, type, props, parent) || this;
     }
     Object.defineProperty(KioContentModel.prototype, "isLoaded", {
         get: function () {
-            return this._data !== null;
+            return this._data !== undefined;
         },
         enumerable: true,
         configurable: true

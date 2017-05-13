@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@angular/router": "^4.0.2",
-    "@types/node": "^7.0.13"
+    "@types/node": "^7.0.13",
+    "kio-ng2-env": "github:afkmatze/kio-ng2-env"
   },
   "repository": {
     "type": "git",

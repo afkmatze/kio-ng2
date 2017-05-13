@@ -5,7 +5,10 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./classes"));
 __export(require("./enums"));
+__export(require("./types"));
+__export(require("./interfaces"));
 require("./afkm");
-var debugging = require("./debug");
-exports.debugging = debugging;
+/*import * as debugging from './debug'
+
+export { debugging }*/ 
 //# sourceMappingURL=index.js.map

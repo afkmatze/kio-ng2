@@ -1,32 +1,32 @@
 import { KioNodeModel } from './kio-node'
-import { KioContent } from '../interfaces'
+import { KioContent, KioFragment, KioContentData } from '../interfaces'
+import * as Types from '../types/kio-content'
 
-export class KioContentModel extends KioNodeModel {
+export class KioContentModel<T extends Types.KioPrimitiveContentType> extends KioNodeModel<T> {
 
-  constructor ( data:any, parent?:any ) {
-    super(data,parent)
+  type:T
 
-    if ( data.data )
-    {
-      this._data = data.data
-    }
+  constructor ( type:T, props:KioContent<T>, parent?:KioFragment<Types.KioNestedContentType> ) {
+
+    super(type,props,parent)
+    
   }
 
   get isLoaded () {
-    return this._data !== null
+    return this._data !== undefined
   }
 
-  private _data : any = null
+  private _data : KioContentData<T>
 
   get data(){
     return this._data
   }
 
-  set data ( $data ) {
+  set data ( $data:KioContentData<T> ) {
     this._data = $data
   }
 
-  toObject():KioContent {
+  toObject():KioContent<T> {
     return Object.assign ( {} , super.toObject() , {data: this._data} )
   }
 }

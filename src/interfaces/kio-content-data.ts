@@ -1,6 +1,10 @@
-export interface KioContentData {}
+import * as Types from '../types/kio-content'
 
-export interface KioTxtData extends KioContentData {
+export interface KioContentData <T extends Types.KioPrimitiveContentType>{
+  type:T
+}
+
+export interface KioTxtData extends KioContentData<Types.KioCtnTxt> {
   text:string;
   locale:string;
 }
@@ -14,7 +18,7 @@ export interface KioImageMetaData {
 }
 
 
-export interface KioSrcData extends KioContentData {
+export interface KioSrcData extends KioContentData<Types.KioCtnSrc> {
   url:URL;
   locale:string;
   meta:KioSrcMetaData
