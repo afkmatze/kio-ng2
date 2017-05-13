@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var debug = require("./debug");
+//import * as debug from './debug'
 if ('undefined' !== typeof window) {
-    window.afkm = debug;
+    //(<any>window).afkm = debug
 }
 //# sourceMappingURL=afkm.js.map

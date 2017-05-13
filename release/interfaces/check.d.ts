@@ -1,0 +1,12 @@
+import { KioContent } from './kio-content';
+import { KioFragment } from './kio-fragment';
+import { KioNode } from './kio-node';
+import { KioPublication } from './kio-publication';
+import { KioNestedContentType, KioPrimitiveContentType } from '../types';
+import { KioNodeType } from '../enums';
+export declare const implementsKioNode: <T extends KioNodeType>(other: any) => other is KioNode<T>;
+export declare const implementsKioFragment: <T extends KioNestedContentType>(other: any) => other is KioFragment<T>;
+export declare const implementsKioContent: <T extends KioPrimitiveContentType>(other: any) => other is KioContent<T>;
+export declare const implementsKioSrc: (other: any) => other is KioContent<KioNodeType.src>;
+export declare const implementsKioTxt: (other: any) => other is KioContent<KioNodeType.txt>;
+export declare const implementsKioPublication: (other: any) => other is KioPublication;

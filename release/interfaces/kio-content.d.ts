@@ -1,5 +1,6 @@
 import { KioNode } from './kio-node';
 import { KioContentData } from './kio-content-data';
-export interface KioContent extends KioNode {
-    data?: KioContentData | undefined;
+import * as Types from '../types/kio-content';
+export interface KioContent<T extends Types.KioPrimitiveContentType> extends KioNode<T> {
+    data?: KioContentData<T>;
 }

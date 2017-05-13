@@ -1,7 +1,9 @@
 import { KioFragmentModel } from './kio-fragment'
 import { KioQuery, KioPublication, KioPublicationHead } from '../interfaces'
+import { KioCtnPublication } from '../types'
+import { KioNodeType } from '../enums'
 
-export class KioPublicationModel extends KioFragmentModel 
+export class KioPublicationModel extends KioFragmentModel<KioNodeType.publication>
 {
 
   constructor ( props : KioPublication ) {
@@ -26,7 +28,7 @@ export class KioPublicationModel extends KioFragmentModel
     return {
       cuid: this.cuid ,
       locale: this.locale ,
-      role: this.type ,
+      role: KioNodeType[this.type] ,
       headers: true ,
       cmd: 'get'
     }

@@ -1,34 +1,36 @@
 import { KioNode, KioNodeHeaders, KioFragment, KioQuery } from '../interfaces'
+import * as Types from '../types/kio-content'
+import { KioNodeType } from '../enums'
 
 const RX_SLUG_MOD : RegExp = new RegExp (/^slug\-/)
 
-export class KioNodeModel implements KioNode {
+export class KioNodeModel<T extends KioNodeType> implements KioNode<T> {
 
-  get isKioNode () { return true }
-  set isKioNode ( b ) { }
-
-  constructor ( props : any , parent? : KioFragment) {
-    this._type = props.type || 'pub'
+  constructor ( type:T, props:KioNode<T> , parent?:KioFragment<Types.KioNestedContentType> ) {
+    this._type = type
     this._cuid = props.cuid
     this._locale = props.locale
-    this._modifiers = props.modifiers || props.mod || []
+    this._modifiers = props.modifiers || []
     this._headers = props.headers || {}
     this._parent = parent
   } 
 
-  private _type : string;
-  private _cuid : string
-  private _locale : string
-  private _modifiers : string[]
-  private _parent : KioFragment
-  private _headers : KioNodeHeaders;
-
-
-  get type () {
+  private  _type:T
+  get type():T {
     return this._type
   }
 
-  get cuid () {
+  get typeName():string {
+    return KioNodeType[<number>this.type]
+  }
+
+  private _cuid : string
+  private _locale : string
+  private _modifiers : string[]
+  private _parent : KioFragment<Types.KioNestedContentType>
+  private _headers : KioNodeHeaders;
+
+  get cuid():string {
     return this._cuid
   }
 
@@ -44,11 +46,11 @@ export class KioNodeModel implements KioNode {
     return this._modifiers.indexOf ( modifier ) > -1
   }
 
-  get parent () {
+  get parent ():KioFragment<Types.KioNestedContentType> {
     return this._parent
   }
 
-  set parent ( parentNode : KioFragment ) {
+  set parent ( parentNode : KioFragment<Types.KioNestedContentType> ) {
     this._parent = parentNode || null
   }
 
@@ -69,8 +71,8 @@ export class KioNodeModel implements KioNode {
     {
       return -1
     }
-    const parentFragment = <KioFragment>this.parent
-    return (<any>parentFragment).childIndex ( this )
+    const parentFragment = this.parent
+    return parentFragment.childIndex ( this )
   }
 
   // KioNavigationItem
@@ -83,17 +85,17 @@ export class KioNodeModel implements KioNode {
     return {
       cuid: this.cuid ,
       locale: this.locale ,
-      role: this._type ,
+      role: this.typeName ,
       cmd: 'get'
     }
   }
 
-  get pathToRoot():KioNode[] {
-    const path:KioNode[] = []
+  get pathToRoot():KioNode<Types.KioStructureType>[] {
+    const path:KioNode<Types.KioStructureType>[] = []
     return this.parent ? this.parent.pathToRoot.concat(this) : [this]
   }
 
-  toObject():KioNode{
+  toObject():KioNode<Types.KioStructureType>{
     return {
       type: this._type,
       cuid: this._cuid,

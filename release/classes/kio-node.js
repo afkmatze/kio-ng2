@@ -1,24 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var enums_1 = require("../enums");
 var RX_SLUG_MOD = new RegExp(/^slug\-/);
 var KioNodeModel = (function () {
-    function KioNodeModel(props, parent) {
-        this._type = props.type || 'pub';
+    function KioNodeModel(type, props, parent) {
+        this._type = type;
         this._cuid = props.cuid;
         this._locale = props.locale;
-        this._modifiers = props.modifiers || props.mod || [];
+        this._modifiers = props.modifiers || [];
         this._headers = props.headers || {};
         this._parent = parent;
     }
-    Object.defineProperty(KioNodeModel.prototype, "isKioNode", {
-        get: function () { return true; },
-        set: function (b) { },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(KioNodeModel.prototype, "type", {
         get: function () {
             return this._type;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(KioNodeModel.prototype, "typeName", {
+        get: function () {
+            return enums_1.KioNodeType[this.type];
         },
         enumerable: true,
         configurable: true
@@ -99,7 +101,7 @@ var KioNodeModel = (function () {
             return {
                 cuid: this.cuid,
                 locale: this.locale,
-                role: this._type,
+                role: this.typeName,
                 cmd: 'get'
             };
         },

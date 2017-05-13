@@ -1,8 +1,8 @@
-import * as debug from './debug'
+//import * as debug from './debug'
 
 
 
 if ( 'undefined' !== typeof window )
 {
-  (<any>window).afkm = debug
+  //(<any>window).afkm = debug
 }

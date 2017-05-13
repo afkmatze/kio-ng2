@@ -1,4 +1,6 @@
 import { KioQuery, KioContent, KioNode } from '../interfaces'
+import * as Types from '../types'
+import { KioNodeType } from '../enums'
 
 export class KioQueryModel implements KioQuery {
 
@@ -9,19 +11,20 @@ export class KioQueryModel implements KioQuery {
   headers:boolean
   params:any
 
-  static fromNode ( node : KioNode ) : KioQueryModel {
+  static fromNode <T extends Types.KioStructureType, N extends KioNode<T>> ( node : N ) : KioQueryModel {
     const query = new KioQueryModel ()
     query.cuid = node.cuid
     query.locale = node.locale
     query.cmd = 'get'
-    query.role = node.type
-    if ( node.type === 'pub' )
+    query.role = KioNodeType[node.type]
+    if ( Types.isCtnPublication(node.type) )
     {
-      query.headers = true  
+      query.headers = true
+      query.role = 'pub'
     }
-    else if ( node.type === 'src' )
+    else if ( Types.isCtnSrc(node.type) )
     {
-      const mimeType:string = (<KioContent>node).headers.mimeType
+      const mimeType:string = node.headers.mimeType
       if ( mimeType && mimeType.startsWith ( 'image' ) )
       {
         query.cmd = 'img'

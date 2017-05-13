@@ -9,3 +9,5 @@ export * from './kio-publication'
 export * from './kio-query'
 export * from './kio-query-result'
 export * from './kio-filter'
+
+export * from './check'
