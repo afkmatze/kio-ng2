@@ -10,7 +10,6 @@ export interface KioNode<T extends Types.KioStructureType> {
     modifiers?: string[];
     parent?: KioNode<Types.KioNestedContentType>;
     index?: number;
-    isKioNode?: boolean;
     headers?: KioNodeHeaders;
     pathToRoot?: KioNode<Types.KioStructureType>[];
 }
