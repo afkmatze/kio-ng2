@@ -1,0 +1,10 @@
+import * as Types from './kio-content';
+import { KioNodeType } from '../enums';
+export declare const isCtnPublication: (other: string | number | KioNodeType) => other is KioNodeType.publication;
+export declare const isCtnFragment: (other: string | number | KioNodeType) => other is KioNodeType.fragment;
+export declare const isCtnSrc: (other: string | number | KioNodeType) => other is KioNodeType.src;
+export declare const isCtnTxt: (other: string | number | KioNodeType) => other is KioNodeType.txt;
+export declare const isNestedContentType: (other: string | number | KioNodeType) => other is Types.KioNestedContentType;
+export declare const isPrimitiveContentType: (other: string | number | KioNodeType) => other is Types.KioPrimitiveContentType;
+export declare const isChildContentType: (other: string | number | KioNodeType) => other is Types.KioChildContentType;
+export declare const isStructureContentType: (other: string | number | KioNodeType) => other is Types.KioChildContentType;

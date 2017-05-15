@@ -5,7 +5,9 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./classes"));
 __export(require("./enums"));
+__export(require("./types"));
+var types = require("./types");
+__export(require("./interfaces"));
 require("./afkm");
-var debugging = require("./debug");
-exports.debugging = debugging;
+exports.Types = types;
 //# sourceMappingURL=index.js.map

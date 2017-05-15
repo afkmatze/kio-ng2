@@ -1,15 +1,20 @@
 import { KioContentModel, KioFragmentModel, KioPublicationModel, KioQueryModel } from '../classes'
 
-export type KioContentType = "publication"|"fragment"|"txt"|"src"|string
+import { KioNodeType } from '../enums'
 
-export type KioModelType = KioContentModel|KioFragmentModel|KioPublicationModel
+export type KioCtnPublication = KioNodeType.publication
+export type KioCtnFragment = KioNodeType.fragment
+export type KioCtnTxt = KioNodeType.txt
+export type KioCtnSrc = KioNodeType.src
 
-export type KioContentTypeSrc = "src"
-export type KioContentTypeTxt = "txt"
-export type KioContentTypeFragment = "fragment"
-export type KioContentTypePublication = "pub"
 
-export type KioNestedContentTypes = KioContentTypeFragment | KioContentTypePublication
-export type KioPrimitiveContentTypes = KioContentTypeSrc | KioContentTypeTxt
+export type KioNestedContentType = KioCtnFragment|KioCtnPublication
+export type KioChildContentType = KioCtnSrc|KioCtnTxt|KioCtnFragment
+export type KioPrimitiveContentType = KioCtnSrc|KioCtnTxt
 
-export type KioContentTypes = KioNestedContentTypes | KioPrimitiveContentTypes
+export type KioStructureType = KioNestedContentType|KioPrimitiveContentType
+
+export type KioContentType = KioCtnPublication|KioCtnFragment|KioCtnTxt|KioCtnSrc
+export type KioQueryableContentType = KioCtnPublication|KioCtnTxt|KioCtnSrc
+
+export type KioModelType = KioContentModel<KioPrimitiveContentType>|KioFragmentModel<KioCtnFragment>|KioPublicationModel
