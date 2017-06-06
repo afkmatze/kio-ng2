@@ -41,3 +41,22 @@ export const primitiveNodeType = ( name:string|number|KioNodeType ):Types.KioPri
       return KioNodeType.txt
   }
 }
+
+
+export const childNodeType = ( name:string|number|KioNodeType ):Types.KioChildContentType => {
+  if ( 'string' === typeof name )
+  {
+    return childNodeType(KioNodeType[name])
+  }
+  switch ( name )
+  {
+    case KioNodeType.fragment:
+      return KioNodeType.fragment
+
+    case KioNodeType.src:
+      return KioNodeType.src
+
+    case KioNodeType.txt:
+      return KioNodeType.txt
+  } 
+}

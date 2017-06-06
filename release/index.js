@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./classes"));
 __export(require("./enums"));
 __export(require("./types"));
+var types = require("./types");
 __export(require("./interfaces"));
 require("./afkm");
-/*import * as debugging from './debug'
-
-export { debugging }*/ 
+exports.Types = types;
 //# sourceMappingURL=index.js.map

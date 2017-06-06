@@ -33,4 +33,17 @@ exports.primitiveNodeType = function (name) {
             return enums_1.KioNodeType.txt;
     }
 };
+exports.childNodeType = function (name) {
+    if ('string' === typeof name) {
+        return exports.childNodeType(enums_1.KioNodeType[name]);
+    }
+    switch (name) {
+        case enums_1.KioNodeType.fragment:
+            return enums_1.KioNodeType.fragment;
+        case enums_1.KioNodeType.src:
+            return enums_1.KioNodeType.src;
+        case enums_1.KioNodeType.txt:
+            return enums_1.KioNodeType.txt;
+    }
+};
 //# sourceMappingURL=index.js.map
