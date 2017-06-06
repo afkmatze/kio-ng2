@@ -1,3 +1,8 @@
+/**
+ * @module kio-ng2
+ * @namespace Classes
+ */
+
 import { KioNode, KioNodeHeaders, KioFragment, KioQuery } from '../interfaces'
 import * as Types from '../types/kio-content'
 import { KioNodeType } from '../enums'

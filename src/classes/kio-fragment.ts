@@ -1,3 +1,8 @@
+/**
+ * @module kio-ng2
+ * @namespace Classes
+ */
+
 import { KioContentModel } from './kio-content'
 import { KioNodeModel } from './kio-node'
 import { 

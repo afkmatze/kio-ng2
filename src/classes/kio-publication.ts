@@ -1,3 +1,9 @@
+/**
+ * @module kio-ng2
+ * @namespace Classes
+ */
+
+
 import { KioFragmentModel } from './kio-fragment'
 import { KioQuery, KioPublication, KioPublicationHead } from '../interfaces'
 import { KioCtnPublication } from '../types'

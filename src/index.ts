@@ -1,3 +1,7 @@
+/**
+ * @module kio-ng2
+ * @preferred
+ */
 export * from './classes'
 export * from './enums'
 export * from './types'

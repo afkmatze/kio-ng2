@@ -11,7 +11,10 @@
     "build:release": "NODE_ENV=production tsc",
     "build:release:watch": "./scripts/watch.sh build:release",
     "preversion": "npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "pretypedoc": "rm -rf ./doc",
+    "typedoc": "typedoc --name kio-ng2 --exclude *.spec.ts --out doc ./src",
+    "typedoc:watch": "./scripts/watch.sh typedoc"
   },
   "keywords": [],
   "author": "",
@@ -19,12 +22,12 @@
   "devDependencies": {
     "nodemon": "^1.11.0",
     "tslint": "^5.2.0",
+    "typedoc": "^0.7.1",
     "typescript": "^2.2.2"
   },
   "dependencies": {
     "@angular/router": "^4.1.2",
-    "@types/node": "^7.0.18",
-    "kio-ng2-env": "github:afkmatze/kio-ng2-env"
+    "@types/node": "^7.0.18"
   },
   "repository": {
     "type": "git",
