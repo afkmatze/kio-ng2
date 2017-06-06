@@ -9,7 +9,7 @@ export interface KioFragment<T extends Types.KioNestedContentType> extends KioNo
   children? : KioNode<Types.KioStructureType>[];
   cont? : any[];
 
-  filterChildren <C extends Types.KioChildContentType>( predicate:KioNodeFilter<C,T> ):KioNode<C>[]
+  /*filterChildren <C extends Types.KioChildContentType>( predicate:KioNodeFilter<C,T> ):KioNode<C>[]
   find <C extends Types.KioChildContentType>( predicate:KioNodeFilter<C,T> ):KioNode<C>
 
   //createChildNode <C extends Types.KioChildContentType>( props:KioNode<C> ):KioNode<C>
@@ -21,6 +21,6 @@ export interface KioFragment<T extends Types.KioNestedContentType> extends KioNo
 
   readonly content:KioNode<Types.KioChildContentType>[]
 
-  toObject():any
+  toObject():any*/
 
 }

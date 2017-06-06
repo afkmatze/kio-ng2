@@ -17,4 +17,4 @@ export type KioStructureType = KioNestedContentType|KioPrimitiveContentType
 export type KioContentType = KioCtnPublication|KioCtnFragment|KioCtnTxt|KioCtnSrc
 export type KioQueryableContentType = KioCtnPublication|KioCtnTxt|KioCtnSrc
 
-export type KioModelType = KioContentModel<KioPrimitiveContentType>|KioFragmentModel<KioCtnFragment>|KioPublicationModel
+export type KioModelType = KioContentModel<KioPrimitiveContentType>|KioFragmentModel|KioPublicationModel

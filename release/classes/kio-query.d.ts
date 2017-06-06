@@ -1,3 +1,7 @@
+/**
+ * @module kio-ng2
+ * @namespace Classes
+ */
 import { KioQuery, KioNode } from '../interfaces';
 import * as Types from '../types';
 export declare class KioQueryModel implements KioQuery {

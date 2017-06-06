@@ -1,4 +1,8 @@
 "use strict";
+/**
+ * @module kio-ng2
+ * @namespace Classes
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var enums_1 = require("../enums");
 var RX_SLUG_MOD = new RegExp(/^slug\-/);

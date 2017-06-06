@@ -4,12 +4,12 @@
  */
 
 
-import { KioFragmentModel } from './kio-fragment'
+import { KioNestedModel } from './kio-nested'
 import { KioQuery, KioPublication, KioPublicationHead } from '../interfaces'
 import { KioCtnPublication } from '../types'
 import { KioNodeType } from '../enums'
 
-export class KioPublicationModel extends KioFragmentModel<KioNodeType.publication>
+export class KioPublicationModel extends KioNestedModel<KioNodeType.publication>
 {
 
   constructor ( props : KioPublication ) {
@@ -34,7 +34,7 @@ export class KioPublicationModel extends KioFragmentModel<KioNodeType.publicatio
     return {
       cuid: this.cuid ,
       locale: this.locale ,
-      role: KioNodeType[this.type] ,
+      role: KioNodeType[KioNodeType.publication] ,
       headers: true ,
       cmd: 'get'
     }
