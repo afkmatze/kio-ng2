@@ -4,10 +4,12 @@
   "main": "release/index.js",
   "typings": "release/index.d.ts",
   "scripts": {
+    "copy:release": "./scripts/copy_release.sh",
     "prebuild": "rm -rf ./release",
     "build": "NODE_ENV=production tsc",
     "build:watch": "./scripts/watch.sh build",
     "prebuild:release": "rm -rf ./release",
+    "postbuild:release": "npm run copy:release",
     "build:release": "NODE_ENV=production tsc",
     "build:release:watch": "./scripts/watch.sh build:release",
     "preversion": "npm run build",

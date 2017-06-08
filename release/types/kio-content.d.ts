@@ -10,4 +10,4 @@ export declare type KioPrimitiveContentType = KioCtnSrc | KioCtnTxt;
 export declare type KioStructureType = KioNestedContentType | KioPrimitiveContentType;
 export declare type KioContentType = KioCtnPublication | KioCtnFragment | KioCtnTxt | KioCtnSrc;
 export declare type KioQueryableContentType = KioCtnPublication | KioCtnTxt | KioCtnSrc;
-export declare type KioModelType = KioContentModel<KioPrimitiveContentType> | KioFragmentModel<KioCtnFragment> | KioPublicationModel;
+export declare type KioModelType = KioContentModel<KioPrimitiveContentType> | KioFragmentModel | KioPublicationModel;

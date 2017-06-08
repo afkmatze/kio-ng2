@@ -1,4 +1,8 @@
 "use strict";
+/**
+ * @module kio-ng2
+ * @namespace Classes
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -10,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var kio_fragment_1 = require("./kio-fragment");
+var kio_nested_1 = require("./kio-nested");
 var enums_1 = require("../enums");
 var KioPublicationModel = (function (_super) {
     __extends(KioPublicationModel, _super);
@@ -39,7 +43,7 @@ var KioPublicationModel = (function (_super) {
             return {
                 cuid: this.cuid,
                 locale: this.locale,
-                role: enums_1.KioNodeType[this.type],
+                role: enums_1.KioNodeType[enums_1.KioNodeType.publication],
                 headers: true,
                 cmd: 'get'
             };
@@ -51,6 +55,6 @@ var KioPublicationModel = (function (_super) {
         return Object.assign({}, _super.prototype.toObject.call(this), { title: this._title, head: this.head });
     };
     return KioPublicationModel;
-}(kio_fragment_1.KioFragmentModel));
+}(kio_nested_1.KioNestedModel));
 exports.KioPublicationModel = KioPublicationModel;
 //# sourceMappingURL=kio-publication.js.map

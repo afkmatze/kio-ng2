@@ -5,6 +5,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./kio-content"));
 __export(require("./kio-node"));
+__export(require("./kio-nested"));
 __export(require("./kio-fragment"));
 __export(require("./kio-publication"));
 __export(require("./kio-query"));
