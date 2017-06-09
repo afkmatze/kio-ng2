@@ -1,10 +1,9 @@
-import { KioContentType } from '../types/kio-content';
 export interface KioNodeHeaders {
     [key: string]: any;
 }
 export interface KioNode {
     cuid: string;
-    type?: KioContentType;
+    type?: string;
     locale?: string;
     modifiers?: string[];
     parent?: KioNode;

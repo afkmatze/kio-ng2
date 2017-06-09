@@ -1,3 +1,1 @@
-export interface MatchingQuery {
-  [key:string]: any;
-}
+export * from './interfaces'
