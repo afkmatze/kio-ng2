@@ -6,6 +6,9 @@
   "scripts": {
     "prebuild": "rm -rf ./release",
     "build": "NODE_ENV=production tsc",
+    "prebuild:release": "rm -rf ./release",
+    "build:release": "NODE_ENV=production tsc",
+    "build:release:watch": "./scripts/watch.sh build:release",    
     "preversion": "npm run build"
   },
   "keywords": [],
