@@ -3,8 +3,6 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./classes"));
-__export(require("./components"));
-__export(require("./enums"));
-__export(require("./types"));
+__export(require("./annotation"));
+__export(require("./component"));
 //# sourceMappingURL=index.js.map

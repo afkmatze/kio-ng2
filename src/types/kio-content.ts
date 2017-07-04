@@ -2,6 +2,8 @@ import { KioContentModel, KioFragmentModel, KioPublicationModel, KioQueryModel }
 
 import { KioNodeType } from '../enums'
 
+export type KioNodeTypeName = keyof typeof KioNodeType
+
 export type KioCtnPublication = KioNodeType.publication
 export type KioCtnFragment = KioNodeType.fragment
 export type KioCtnTxt = KioNodeType.txt

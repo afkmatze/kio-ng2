@@ -1,5 +1,6 @@
 import { KioContentModel, KioFragmentModel, KioPublicationModel } from '../classes';
 import { KioNodeType } from '../enums';
+export declare type KioNodeTypeName = keyof typeof KioNodeType;
 export declare type KioCtnPublication = KioNodeType.publication;
 export declare type KioCtnFragment = KioNodeType.fragment;
 export declare type KioCtnTxt = KioNodeType.txt;
